@@ -1,0 +1,8 @@
+#export http_proxy=http://10.240.210.99:3128
+#export https_proxy=http://10.240.210.99:3128
+shdir=`dirname $0`
+source $shdir/color.sh
+
+log_info "vbs -c tizen_src/build/gbs.conf build -A armv7l --include-all -P tztv_v3.0_arm-jazzm --define 'nodebug 1'"
+vbs -c tizen_src/build/gbs.conf build -A armv7l --include-all -P tztv_v3.0_arm-jazzm --define "nodebug 1"
+

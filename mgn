@@ -1,0 +1,73 @@
+#!/usr/bin/env python
+
+import os
+import sys
+
+# Import log module
+sys.path.append('/home/wanglin0408/WorkDir/python')
+import logger
+
+# The target dir for build
+outDir = 'out/Default'
+
+def main(args):
+  # There must be args in any situation for gn
+  if len(args) > 1:
+    cmd = args[1]
+    # Generate makefile for ninja
+    if cmd == 'gen':
+      command = 'gn gen ' + outDir
+      logger.info(command)
+      os.system(command)
+    # Build target, default will build all
+    elif cmd == 'build':
+      command = 'ninja -C ' + outDir
+      targets = ''
+      if len(args) > 2:
+        targets = args[2]
+      command += ' ' + targets
+      logger.info(command)
+      os.system(command)
+    # Clean the target
+    elif cmd == 'clean':
+      command = 'rm -rf ' + outDir
+      logger.info(command)
+      os.system(command)
+    # Run executable bin in outDir
+    elif cmd == 'run':
+      if os.path.exists(outDir) == False:
+        logger.error('Out dir doesnot exist : ' + outDir)
+        return
+      logger.info('Binary in %s:'%outDir)
+      os.chdir(outDir)
+      command = "ls -l | grep '\-x' | awk {'print $9'}"
+      exeList = os.popen(command).read()
+      exeList = exeList.split('\n')
+      i = 0;
+      for exeFile in exeList:
+        if len(exeFile) == 0:
+          continue
+        logger.debug(str(i + 1) + ':' + exeFile)
+        i += 1
+      # We can run binary with params
+      print 'Enter executable index, param followed with - :'
+      exeIndex = raw_input()
+      exeParam = ''
+      if exeIndex.find('-') != -1:
+        exeIndex = exeIndex.split('-')
+        exeParam = exeIndex[1]
+        exeIndex = exeIndex[0]
+      if exeIndex.isdigit() == False:
+        logger.error('Invalid index!')
+        return
+      else:
+        exeIndex = int(exeIndex)
+      if (exeIndex <= 0 or exeIndex > i):
+        logger.error('Invalid index!')
+        return
+      command = './' + exeList[exeIndex - 1] + ' ' + exeParam
+      logger.info(command)
+      os.system(command)
+
+if __name__ == '__main__':
+  sys.exit(main(sys.argv))

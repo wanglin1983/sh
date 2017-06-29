@@ -1,0 +1,44 @@
+complete -F mygit_complete_func mgit
+mygit_complete_func()
+{    
+    local cur prev opts    
+    COMPREPLY=()    
+    cur="${COMP_WORDS[COMP_CWORD]}"    
+    prev="${COMP_WORDS[COMP_CWORD-1]}"    
+    opts="push pull status check"                                                                                                                                                                                  
+  
+    if [[ ${cur} == * ]] ; then    
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )     
+        return 0     
+    fi    
+}
+
+complete -F mygbuild_complete_func gbuild
+mygbuild_complete_func()
+{    
+    local cur prev opts    
+    COMPREPLY=()    
+    cur="${COMP_WORDS[COMP_CWORD]}"    
+    prev="${COMP_WORDS[COMP_CWORD-1]}"    
+    opts="backtrace clean vbs"                                                                                                                                                                                  
+  
+    if [[ ${cur} == * ]] ; then    
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )     
+        return 0     
+    fi    
+}
+
+complete -F mygn_complete_func mgn
+mygn_complete_func()
+{    
+    local cur prev opts    
+    COMPREPLY=()    
+    cur="${COMP_WORDS[COMP_CWORD]}"    
+    prev="${COMP_WORDS[COMP_CWORD-1]}"    
+    opts="gen build clean run"                                                                                                                                                                                  
+  
+    if [[ ${cur} == * ]] ; then    
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )     
+        return 0     
+    fi    
+}

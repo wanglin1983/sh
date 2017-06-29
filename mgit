@@ -1,0 +1,36 @@
+source /home/wanglin0408/WorkDir/sh/color.sh
+
+log_info()
+{
+    color_echo $YELLOW "$@"
+}
+
+log_error()
+{
+    color_echo $RED "$@"
+}
+
+if [ $# -gt 0 ]; then
+    case $1 in
+    push)
+        log_info "git push origin HEAD:refs/for/tizen_3.0"
+        git push origin HEAD:refs/for/tizen_3.0
+        ;;
+    pull)
+        log_info "git pull"
+        git pull
+        ;;
+    status)
+        log_info "git status -uno ."
+        git status -uno .
+        ;;
+    check)
+        log_info "Checking chromium coding style..."
+        tizen_src/scripts/fix_coding_style.sh -v
+        ;;
+    *)
+        git $*
+    esac
+else
+    log_error "No operation param is set..."
+fi

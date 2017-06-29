@@ -1,0 +1,6 @@
+/home/wanglin0408/WorkDir/Tizen3.0/chromium-efl/tizen_src/chromium_impl/media/base/tizen
+/home/wanglin0408/WorkDir/Tizen3.0/chromium-efl/tizen_src/chromium_impl/content/common/media
+/home/wanglin0408/WorkDir/Tizen3.0/chromium-efl/tizen_src/chromium_impl/content/renderer/media/tizen
+/home/wanglin0408/WorkDir/Tizen3.0/chromium-efl/tizen_src/chromium_impl/content/browser/media/tizen
+/home/wanglin0408/WorkDir/Tizen3.0/chromium-efl/third_party/WebKit/Source/modules/webaudio
+/home/wanglin0408/WorkDir/Tizen3.0/chromium-efl/third_party/WebKit/Source/platform/audio
