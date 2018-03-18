@@ -18,8 +18,7 @@ alias cdcodes='cd ~/Codes'
 alias cdwd='cd $wd'
 alias cdsh='cd $wd/sh'
 alias cdpy='cd $wd/python'
-alias cdtp='cd /home/wanglin0408/WorkDir/P4'
-alias hp='cat /home/wanglin0408/WorkDir/sh/helper.txt'
+alias hp='cat /home/pi/WorkDir/sh/helper.txt'
 
 for i in {2..9}
 do

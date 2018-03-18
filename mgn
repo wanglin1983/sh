@@ -4,7 +4,7 @@ import os
 import sys
 
 # Import log module
-sys.path.append('/home/wanglin0408/WorkDir/python')
+sys.path.append('/home/pi/WorkDir/python')
 import logger
 
 # The target dir for build
