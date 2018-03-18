@@ -1,9 +1,8 @@
 #System alias
+WORKDIR=/home/pi/WorkDir
 wd=$WORKDIR
 
 tizen="review.tizen.org"
-
-alias t=$tizen
 
 alias cc='clear'
 alias ll='ls -lh'
@@ -14,11 +13,10 @@ alias lld='ls -l -d */'
 alias ld='ls -d */'
 alias cd..='cd ..'
 
-alias cdco='cd $wd/Cobalt'
+alias cdco='cd $wd/cobalt'
 alias cdcodes='cd ~/Codes'
 alias cdwd='cd $wd'
 alias cdsh='cd $wd/sh'
-alias cdsht='cd $wd/sh-tizen'
 alias cdpy='cd $wd/python'
 alias cdtp='cd /home/wanglin0408/WorkDir/P4'
 alias hp='cat /home/wanglin0408/WorkDir/sh/helper.txt'
@@ -93,6 +91,22 @@ kill_process()
             kill -9 $psid
         done
     fi
+}
+
+show_wifi_list()
+{
+    sudo iwlist wlan0 scan | grep ESSID
+}
+
+edit_wifi()
+{
+    cat wpa_supplicant.conf
+    sudo vim /etc/wpa_supplicant/wpa_supplicant.conf
+}
+
+update_apps()
+{
+    sudo apt-get update && apt-get upgrade -y
 }
 
 alias mcp='mkdir_copy'
