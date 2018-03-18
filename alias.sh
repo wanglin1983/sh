@@ -106,7 +106,7 @@ edit_wifi()
 
 update_apps()
 {
-    sudo apt-get update && apt-get upgrade -y
+    sudo apt-get update && sudo apt-get upgrade -y
 }
 
 alias mcp='mkdir_copy'
